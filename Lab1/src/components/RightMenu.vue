@@ -1,56 +1,44 @@
 <template>
   <div class="dashboard-nav-menu">
-    <div class="logo-wrapper">
-      <div class="logo">Lehmann</div>
+    <div class="controls__wrapper">
+      <div @click="fontStore.increaseFont">
+        <Icon icon="mdi:plus-thick" width="32" height="32" />
+      </div>
+      <div @click="fontStore.decreaseFont">
+        <Icon icon="mdi:minus-thick" width="32" height="32" />
+      </div>
+      <div @click="toggleThemeAction">
+        <Icon icon="mdi:theme-light-dark" width="32" height="32" />
+      </div>
     </div>
-    <div class="nav-element active">
-      <Icon icon="mdi:home-circle-outline" width="32" height="32" />
-      Dashboard
-    </div>
-    <div class="nav-element">
-      <Icon icon="mdi:account-circle-outline" width="32" height="32" />
-      User profile
-    </div>
-    <div class="nav-element-category">Pages</div>
-    <div class="nav-element">
-      <Icon icon="mdi:cog-outline" width="32" height="32" />
-      Account settings
-    </div>
-    <div class="nav-element">
-      <Icon icon="mdi:lock-outline" width="32" height="32" />
-      Authentications
-    </div>
-    <div class="nav-element">
-      <Icon icon="mdi:cube-outline" width="32" height="32" />
-      Misc
-    </div>
-    <div class="nav-element-category">Statistics</div>
-    <div class="nav-element">
-      <Icon icon="mdi:chart-line" width="32" height="32" />
-      Profit
-    </div>
-    <div class="nav-element">
-      <Icon icon="mdi:wallet-bifold-outline" width="32" height="32" />
-      Sales
-    </div>
-    <div class="nav-element">
-      <Icon icon="ic:baseline-paypal" width="32" height="32" />
-      Payments
-    </div>
-    <div class="nav-element">
-      <Icon icon="mdi:credit-card-outline" width="32" height="32" />
-      Transactions
-    </div>
-    <div class="nav-element-category">Reports</div>
-    <div class="nav-element">
-      <Icon icon="mdi:chart-box-outline" width="32" height="32" />
-      Yearly report
-    </div>
+    <NavElement nav-element-label="1" />
+    <NavElement nav-element-label="2" />
+    <NavSection nav-section-label="1" />
+    <NavElement nav-element-label="3" />
+    <NavElement nav-element-label="4" />
+    <NavElement nav-element-label="5" />
+    <NavSection nav-section-label="2" />
+    <NavElement nav-element-label="6" />
+    <NavElement nav-element-label="7" />
+    <NavElement nav-element-label="8" />
+    <NavElement nav-element-label="9" />
+    <NavSection nav-section-label="3" />
+    <NavElement nav-element-label="10" />
   </div>
 </template>
 
 <script setup>
 import { Icon } from "@iconify/vue";
+import { useFontStore } from "../stores/fontStore";
+import NavElement from "./Menu/NavElement.vue";
+import NavSection from "./Menu/NavSection.vue";
+
+const fontStore = useFontStore();
+
+const toggleThemeAction = () => {
+  const container = document.getElementById("dashboard-container");
+  container.classList.toggle("dark");
+};
 </script>
 
 <style scoped>
@@ -62,56 +50,34 @@ import { Icon } from "@iconify/vue";
   display: flex;
   flex-direction: column;
   row-gap: 0.5rem;
-  background: #282828;
+  background: #fff;
 }
 
-.logo-wrapper {
-  margin: 0;
-  padding: 0.5rem;
+.dashboard-container.dark .dashboard-nav-menu {
+  background: #2e2e2e;
 }
 
-.logo {
+.controls__wrapper {
   margin: 0;
   padding: 0;
   width: 100%;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  font-size: 2.25rem;
 }
 
-.nav-element {
+.controls__wrapper div {
   margin: 0;
-  padding: 0.5rem 0.75rem;
-  width: 100%;
+  padding: 0.5rem;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  column-gap: 0.75rem;
-  font-size: 1.25rem;
   border-radius: 0.25rem;
 }
 
-.nav-element:hover {
+.controls__wrapper div:hover {
   color: #10b981;
   background: #10b9812a;
-  border-right: 1rem solid #10b981;
-}
-
-.nav-element.active {
-  color: #10b981;
-  font-weight: bold;
-  background: #10b9812a;
-  border-right: 1rem solid #10b981;
-}
-
-.nav-element-category {
-  margin: 0;
-  padding: 0.5rem 0.75rem;
-  width: fit-content;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  font-size: 1.25rem;
-  color: rgba(160, 160, 160, 0.66);
+  cursor: pointer;
 }
 </style>

@@ -1,63 +1,24 @@
 <template>
   <div class="dashboard-body">
-    <SearchBar />
-    <InfoBox />
-    <SmallBox
-      main-icon="mdi:chart-line"
-      title="Profit"
-      icon-color="green"
-      value="$12,628"
-      profit-icon="mdi:arrow-up"
-      profit-value="+72,80%"
-      profit-icon-color="green"
-    />
-    <SmallBox
-      main-icon="mdi:wallet-bifold-outline"
-      title="Sales"
-      icon-color="blue"
-      value="$4,679"
-      profit-icon="mdi:arrow-up"
-      profit-value="+28,42%"
-      profit-icon-color="green"
-    />
-    <ChartBox />
+    <LongCard />
+    <AverageCard />
+    <SmallCard card-label="Card 3" />
+    <SmallCard card-label="Card 4" />
+    <BigCard />
     <div class="small-boxes-wrapper">
-      <SmallBox
-        main-icon="ic:baseline-paypal"
-        title="Payments"
-        icon-color="red"
-        value="$2,456"
-        profit-icon="mdi:arrow-down"
-        profit-value="-14,82%"
-        profit-icon-color="red"
-      />
-      <SmallBox
-        main-icon="mdi:credit-card-outline"
-        title="Transactions"
-        icon-color="orange"
-        value="$14,857"
-        profit-icon="mdi:arrow-up"
-        profit-value="+28,14%"
-        profit-icon-color="green"
-      />
-      <MiddleBox
-        title="Profile report"
-        badge-text="Year 2021"
-        percentage-icon="mdi:chevron-up"
-        percentage-icon-color="green"
-        percentage-value="68,2%"
-        value="$84,686k"
-      />
+      <SmallCard card-label="Card 6" />
+      <SmallCard card-label="Card 7" />
+      <AverageSmallCard />
     </div>
   </div>
 </template>
 
 <script setup>
-import SearchBar from "./SearchBar.vue";
-import InfoBox from "./InfoBox.vue";
-import ChartBox from "./ChartBox.vue";
-import SmallBox from "./SmallBox.vue";
-import MiddleBox from "./MiddleBox.vue";
+import LongCard from "./Cards/LongCard.vue";
+import AverageCard from "./Cards/AverageCard.vue";
+import SmallCard from "./Cards/SmallCard.vue";
+import BigCard from "./Cards/BigCard.vue";
+import AverageSmallCard from "./Cards/AverageSmallCard.vue";
 </script>
 
 <style scoped>
@@ -77,7 +38,7 @@ import MiddleBox from "./MiddleBox.vue";
   gap: 1rem;
 }
 
-.small-boxes-wrapper .small-box {
+.small-boxes-wrapper .card-wrapper {
   width: calc(50% - 0.5rem);
 }
 </style>
